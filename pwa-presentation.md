@@ -6,8 +6,6 @@
 
 
 
-
-
 # Progressive Web Applications, Service Workers, and You
 
 **by Christopher Plummer**
@@ -95,7 +93,7 @@ __What is a Progressive Web Application?__
 
 
 
-More Website.................................................More Web App
+More Website...................................................More Web App
 
 zombo.com -> bostonglobe.com -> netflix -> Twitter -> Twitch -> Google Docs
 
@@ -117,7 +115,25 @@ zombo.com -> bostonglobe.com -> netflix -> Twitter -> Twitch -> Google Docs
 
 
 
-What about Mobile, Native, Desktop?
+
+
+
+
+
+
+Alex Russell (Google, TAG, TC39) asks:
+
+> Who uses a web-based email client on their _desktop_?
+
+> Who uses a web-based on client on their _phone_?
+
+
+
+
+
+
+
+
 
 
 
@@ -209,7 +225,7 @@ Progressive Web App
 
 
 
-PWAs finally fulfill the long held goal of creating **cross-platform** applications by leveraging the _most widely distributed, dynamic, and open application_ runtime environment: the web browser.
+PWAs attempt to fulfill the long held goal of creating **cross-platform** applications by leveraging the _most widely distributed, dynamic, and open_ application runtime environment: the web browser.
 
 
 
@@ -249,8 +265,8 @@ PWAs finally fulfill the long held goal of creating **cross-platform** applicati
 
 
 ### Reliability
-- Offline
 - Lie-fi
+- Offline
 - Secure
 
 
@@ -273,6 +289,7 @@ PWAs finally fulfill the long held goal of creating **cross-platform** applicati
 - Aggressive caching & preloading
 - Responsively loading assets
 - http/2 and server push
+
 
 
 
@@ -324,11 +341,11 @@ PWAs finally fulfill the long held goal of creating **cross-platform** applicati
 
 
 
-
 How do we make those things happen?
 
 __https, ssl, HTTP/2__
 __Service Workers__
+__fetch__
 __App Manifest__
 
 
@@ -345,10 +362,12 @@ __App Manifest__
 
 
 
-# SSL & HTTP/2
+# HTTP/2 & SSL
 
-- https is required for Service Workers and other browser features. It's **table stakes.**
 - HTTP/2 allows us to serve files faster: multiplexing & server push
+- https is **table stakes.** It's required for Service Workers and other browser features.
+
+
 
 
 
@@ -383,7 +402,8 @@ __Achievements unlocked: Performance, Reliability.__
 
 # Service Workers
 
-JS that allows us to execute tasks in the background.
+JS Worker that allows us to execute tasks in the background.
+
 
 
 
@@ -403,7 +423,21 @@ JS that allows us to execute tasks in the background.
 ## Features:
 
 - Lifecycle Hooks
+ - installing, active, idle, redundant
+
 - Reactive, event based
+ - Wait for events while idle, then activate
+   - Receive and handle messages
+   - Intercept network requests
+
+
+
+
+
+
+
+
+
 
 
 
@@ -439,6 +473,7 @@ JS that allows us to execute tasks in the background.
 - Preload pages, assets, data
 - Manipulate caches directly
 - Cache HTML (!!!)
+
 
 __Offline mode!__
 
@@ -478,11 +513,20 @@ __Offline mode!__
 
 
 
-What else can we do?
+
+What else can we do with _Service Workers_?
 
 - We can also handle **push notifications**.
 - Sync changes when online access is restored.
-- fetch data a user might need in the background.
+- Precache data a user might need in the future in the background.
+- Background data synchronization
+- Receiving updates to services like geolocation or gyroscope
+- Sharing data across web pages
+- Client-side compiling and dependency management for dev purposes
+
+
+
+
 
 
 
@@ -502,6 +546,36 @@ What else can we do?
 
 
 __Achievements unlocked: Performance, Reliability, Engagement__
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_PRPL Pattern_
+
+_Push_
+_Render_
+_Pre-cache_
+_Lazy-load_
+
+
+
 
 
 
@@ -542,7 +616,10 @@ Allows your users to _add your app to the home screen_ and enables **full-screen
 
 
 
+
+
 *show portfolio add to home screen*
+
 
 
 
@@ -577,11 +654,6 @@ __Achievements unlocked: Engagement__
 
 
 
-
-
-
-
-
 ## Business Case:
 
 
@@ -597,13 +669,39 @@ __Achievements unlocked: Engagement__
 
 
 
-### vs. website
+### PWA vs. website
 
-* 53% of users leave a site if it takes more than 3 sec to load
+* _53%_ of users leave a site if it takes more than 3 sec to load
+  - src: https://www.doubleclickbygoogle.com/articles/mobile-speed-matters/
+
+* _7%_ of customers abandon after 1sec load time
+  - src: http://www.aberdeen.com/research/5136/ra-performance-web-application/content.aspx
+
+* Avg. load time for mobile sites is **19 sec.**
+  - src: https://www.doubleclickbygoogle.com/articles/mobile-speed-matters/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 * More reliable
 * More performant
 * More engaging
 * More secure
+
+
 
 
 
@@ -641,23 +739,7 @@ Before we talk about native mobile apps...
 
 
 
-### vs. native
-
-
-
-
-
-
-
-
-
-
-
-
-Alex Russell, google engineer, asks:
-
-Who uses a web-based email client on their _desktop_?
-Who uses a web-based on client on their _phone_?
+### PWA vs. native
 
 
 
@@ -671,20 +753,23 @@ Who uses a web-based on client on their _phone_?
 
 
 
-#### Cost
+
+
+
+
+
+
+
+
 
 * Cost to acquire a new customer has **doubled** since 2014
 
-  - $7.53 CPM, $2.51 CPLU
+  - **$7.53** CPM, **$2.51** CPLU
     - src: https://fiksu.com/resources/mobile-cost-indexes
 
-  - $3.59 CPI (gaming only)
+  - **$3.59** CPI (gaming only)
     - src: https://www.chartboost.com/insights/
 
-* The top three apps get 80% of the downloads.
-
-* 23% of mobile apps abandoned after one use
-  - src: http://info.localytics.com/blog/24-of-users-abandon-an-app-after-one-use
 
 
 
@@ -700,16 +785,18 @@ Who uses a web-based on client on their _phone_?
 
 
 
-* 66% of mobile users download 0 app / month
-  - 18% download 1 or 2
 
-* App store conversion rate is about 26%
+
+
+
+
+* The top three apps get _80%_ of the downloads.
+
+* App store conversion rate is about _26%_
   - src: https://splitmetrics.com/blog/whats-a-good-app-store-page-conversion-rate/
 
-* Download time matters!
-
-* Each step can cost you 20% of your audience
-  - http://blog.gaborcselle.com/2012/10/every-step-costs-you-20-of-users.html
+* Each step can cost you _20%_ of your audience
+  - src: http://blog.gaborcselle.com/2012/10/every-step-costs-you-20-of-users.html
 
 
 
@@ -717,6 +804,51 @@ Who uses a web-based on client on their _phone_?
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* _66%_ of mobile users download 0 app / month
+  - _18%_ download 1 or 2
+  - src: comScore, Quartz, https://qz.com/253618/most-smartphone-users-download-zero-apps-per-month/
+
+* _75%_ download 1+ app per month
+  - avg _0.65 - 1.5_ downloads/month
+  - src: Tune, https://www.tune.com/blog/no-the-average-american-does-not-download-0-apps-each-month/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* _23%_ of mobile apps abandoned after one use
+  - src: http://info.localytics.com/blog/24-of-users-abandon-an-app-after-one-use
 
 
 
@@ -742,12 +874,13 @@ Who uses a web-based on client on their _phone_?
 
 ## Who is doing this?
 
+Twitter
+YouTube
 Weather Channel
 Washington Post
 The Guardian
 Alibaba
 Air Berlin
-Twitter
 
 ...and a bunch more!
 
@@ -786,16 +919,34 @@ Progressive Web Applications are the next Responsive Design
 
 
 
+
+
 ## Useful Links
 
 Google Web Developers: Progressive Web Apps
-   https://developers.google.com/web/progressive-web-apps/)
+   `https://developers.google.com/web/progressive-web-apps/)`
 
 awesome-pwa
-  https://github.com/hemanth/awesome-pwa
+  `https://github.com/hemanth/awesome-pwa`
 
-PWA Rocks
-  https://pwa.rocks/
+What Web Can Do Today
+  `https://whatwebcando.today/`
+
+Offline Cookbook
+  `https://jakearchibald.com/2014/offline-cookbook/`
+
+MDN Service Worker Guide
+  `https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API`
+
+W3C Service Worker Specification
+  `https://www.w3.org/TR/service-workers-1`
+
+
+
+
+
+
+
 
 
 
@@ -807,6 +958,9 @@ t: @IntrusionSignal
 gh: github.com/signal-intrusion
 
 w: signalintrusion.com
+
+
+
 
 
 
