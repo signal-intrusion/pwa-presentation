@@ -48,13 +48,6 @@ w: signalintrusion.com
 
 
 
-Upstatement
-
-upstatement.com
-
-
-
-
 
 
 
@@ -119,6 +112,11 @@ zombo.com -> bostonglobe.com -> netflix -> Twitter -> Twitch -> Google Docs
 
 
 
+
+
+
+
+
 What about Mobile, Native, Desktop?
 
 
@@ -141,6 +139,7 @@ Native
 - [x] Reliable
 - [x] Enagaging
 - [x] Access to hardware
+- [ ] Cross-platform
 
 
 
@@ -168,6 +167,9 @@ Web Site
 - [?] Reliable
 - [?] Enagaging
 - [ ] Access to hardware
+- [x] Cross-platform
+
+
 
 
 
@@ -190,6 +192,8 @@ Progressive Web App
 - [x] Reliable
 - [x] Enagaging
 - [x] Access to hardware
+- [x] Cross-platform
+
 
 
 
@@ -206,6 +210,7 @@ Progressive Web App
 
 
 PWAs finally fulfill the long held goal of creating **cross-platform** applications by leveraging the _most widely distributed, dynamic, and open application_ runtime environment: the web browser.
+
 
 
 
@@ -265,9 +270,9 @@ PWAs finally fulfill the long held goal of creating **cross-platform** applicati
 
 - fast first load, instant second load
 - No big downloads!
-- aggressive caching & preloading
+- Aggressive caching & preloading
 - Responsively loading assets
-- http/2 server push, multiplexing
+- http/2 and server push
 
 
 
@@ -294,8 +299,7 @@ PWAs finally fulfill the long held goal of creating **cross-platform** applicati
 - Push notifications
 - Hardware access
   - geolocation, bluetooth, camera
-
-
+  - `https://whatwebcando.today`
 
 
 
@@ -592,6 +596,7 @@ __Achievements unlocked: Engagement__
 
 
 
+
 ### vs. website
 
 * 53% of users leave a site if it takes more than 3 sec to load
@@ -616,17 +621,99 @@ __Achievements unlocked: Engagement__
 
 
 
+Before we talk about native mobile apps...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### vs. native
 
-* _Return On Investment_ when building native apps is shrinking.
-  - Cost to acquire a new customer has doubled since 2014
+
+
+
+
+
+
+
+
+
+
+
+Alex Russell, google engineer, asks:
+
+Who uses a web-based email client on their _desktop_?
+Who uses a web-based on client on their _phone_?
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Cost
+
+* Cost to acquire a new customer has **doubled** since 2014
+
+  - $7.53 CPM, $2.51 CPLU
+    - src: https://fiksu.com/resources/mobile-cost-indexes
+
+  - $3.59 CPI (gaming only)
+    - src: https://www.chartboost.com/insights/
 
 * The top three apps get 80% of the downloads.
 
+* 23% of mobile apps abandoned after one use
+  - src: http://info.localytics.com/blog/24-of-users-abandon-an-app-after-one-use
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 * 66% of mobile users download 0 app / month
   - 18% download 1 or 2
+
+* App store conversion rate is about 26%
+  - src: https://splitmetrics.com/blog/whats-a-good-app-store-page-conversion-rate/
+
+* Download time matters!
+
+* Each step can cost you 20% of your audience
+  - http://blog.gaborcselle.com/2012/10/every-step-costs-you-20-of-users.html
+
+
+
+
 
 
 
